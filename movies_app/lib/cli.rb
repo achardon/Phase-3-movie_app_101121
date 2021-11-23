@@ -1,10 +1,11 @@
 
 
 def initialize_app 
-    movies = ['2001: A Space Odyssey', 'The Godfather', 'Citizen Kane', 'Raiders of the Lost Ark', 'In the mood for love', 'Seven Samurai']
+    menu
+    # tickets = [{name:'rose', movie:'2001: A Space Odyssey', price:5.00},{name:'ix', movie:'The Godfather', price:5.00}]
+end 
 
-    tickets = [{name:'rose', movie:'2001: A Space Odyssey', price:5.00},{name:'ix', movie:'The Godfather', price:5.00}]
-    
+def menu
     puts "Welcome to Flatiron Movies"
     puts "Please choose an option:"
     puts "1. List all Movies"
@@ -16,26 +17,23 @@ def initialize_app
 
     case user_input
     when "1"
+        movies = ['2001: A Space Odyssey', 'The Godfather', 'Citizen Kane', 'Raiders of the Lost Ark', 'In the mood for love', 'Seven Samurai']
+
         movies.each {|movie| puts movie }
     when "2"
-       puts tickets.map {|ticket| ticket[:name] }
+       puts Ticket.all.map {|ticket| ticket.name }
     when "3"
         puts create_ticket
     else 
         puts "goodbye"
     end 
-
-end 
+end
 
 def create_ticket
-     puts 'name'
-     name = gets.strip
-     puts "Title"
-     title = gets.strip
-
-     {
-         name:name,
-         title:title,
-         price: 5.00
-     }
+    puts "Name"
+    name = gets.strip
+    puts "Title"
+    title = gets.strip
+    t1 = Ticket.new(name, title)
+    menu
 end 
